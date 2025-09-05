@@ -1,18 +1,24 @@
 # Aarti Fashion House
 
-A responsive marketing/catalog website for a premium retail showroom in Punjab that sells fabrics and ready-to-wear suits. Built with Next.js, TypeScript, and Tailwind CSS.
+A responsive, dynamic marketing/catalog website for a premium retail showroom in Punjab that sells fabrics and ready-to-wear suits. Built with Next.js, TypeScript, and Tailwind CSS with both static and dynamic rendering capabilities.
 
 ## 🚀 Features
 
+### Core Features
 - **Responsive Design**: Mobile-first design that works seamlessly across all devices
 - **8 Main Pages**: Home, About, Fabric Collection, Ready-to-Wear Suits, Brands, Gallery, Testimonials, Contact
-- **Product Catalog**: Detailed product cards with filtering capabilities
-- **Client-side Filtering**: Filter fabrics by category, season, and price range
 - **WhatsApp Integration**: Direct contact via WhatsApp for inquiries and appointments
 - **Gallery with Lightbox**: Masonry grid layout with image lightbox functionality
-- **SEO Optimized**: Meta tags, structured data, and accessibility features
 - **Appointment Booking**: Contact forms for appointments and general inquiries
 - **Google Maps Integration**: Embedded map for showroom location
+
+### Dynamic Features ✨
+- **API-Driven Architecture**: RESTful APIs for all data operations
+- **Real-time Filtering**: Server-side filtering with API calls
+- **Dynamic Data Fetching**: Client-side and server-side data loading
+- **Server-Side Rendering**: SEO-optimized pages with SSR
+- **Dynamic Metadata**: SEO metadata generated dynamically
+- **Performance Optimized**: Loading states and optimistic updates
 
 ## 🛠️ Tech Stack
 
@@ -20,7 +26,9 @@ A responsive marketing/catalog website for a premium retail showroom in Punjab t
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS 4
 - **Icons**: Heroicons
-- **Fonts**: Google Fonts (Permanent Marker, Poppins)
+- **Fonts**: Google Fonts (Playfair Display, Cormorant Garamond, Inter)
+- **API**: RESTful API routes with Next.js
+- **Rendering**: Hybrid SSR/CSR for optimal performance
 - **Deployment**: Vercel (recommended)
 
 ## 📦 Installation
@@ -57,16 +65,24 @@ A responsive marketing/catalog website for a premium retail showroom in Punjab t
 
 ```
 src/
-├── app/                    # Next.js App Router pages
+├── app/                    # Next.js App Router pages & API
+│   ├── api/               # API routes (NEW - Dynamic backend)
+│   │   ├── brands/        # Brands API endpoint
+│   │   ├── contact/       # Contact form API
+│   │   ├── fabrics/       # Fabrics API with filtering
+│   │   ├── suits/         # Suits API with filtering
+│   │   ├── testimonials/  # Testimonials API
+│   │   └── metadata/      # Dynamic metadata API
 │   ├── about/             # About page
-│   ├── brands/            # Brands showcase
+│   ├── brands/            # Brands showcase (CSR)
+│   ├── brands-ssr/        # Brands showcase (SSR for SEO)
 │   ├── contact/           # Contact & appointment booking
-│   ├── fabrics/           # Fabric collection with filters
+│   ├── fabrics/           # Fabric collection with dynamic filters
 │   ├── gallery/           # Image gallery with lightbox
 │   ├── suits/             # Ready-to-wear suits
 │   ├── testimonials/      # Customer testimonials
 │   ├── layout.tsx         # Root layout with SEO
-│   └── page.tsx           # Home page
+│   └── page.tsx           # Home page (now dynamic)
 ├── components/            # Reusable components
 │   ├── Header.tsx         # Navigation header
 │   ├── Footer.tsx         # Site footer
@@ -75,28 +91,32 @@ src/
 │   ├── FilterBar.tsx      # Product filtering
 │   ├── Breadcrumbs.tsx    # Navigation breadcrumbs
 │   └── CTA.tsx            # Call-to-action sections
-├── data/                  # JSON data files
+├── data/                  # JSON data files (still used for API)
 │   ├── fabrics.json       # Fabric products
 │   ├── suits.json         # Suit products
 │   ├── brands.json        # Brand information
 │   ├── testimonials.json  # Customer reviews
 │   └── contact.json       # Contact information
-├── types/                 # TypeScript type definitions
-│   └── index.ts          # All interface definitions
-└── lib/                   # Utility functions
+├── lib/                   # Utility functions (NEW)
+│   └── api.ts            # API client functions
+└── types/                 # TypeScript type definitions
+    └── index.ts          # All interface definitions
 ```
 
 ## 🎨 Design System
 
-### Colors
-- **Primary Red**: #B32E1D
-- **Red Hover**: #9A2519
-- **Black**: #1E1E1E
-- **Gray Scale**: Standard Tailwind gray palette
+### Colors (Premium Palette)
+- **Gold Primary**: Custom gold (#D4AF37)
+- **Charcoal**: Deep charcoal for text
+- **Pearl**: Light cream background
+- **Cream**: Warm cream sections
+- **Sage**: Soft sage green accents
+- **Slate**: Modern gray tones
 
 ### Typography
-- **Display Font**: Permanent Marker (headings, brand name)
-- **Body Font**: Poppins (content, navigation)
+- **Display Font**: Playfair Display (elegant headings)
+- **Serif Font**: Cormorant Garamond (body text, quotes)
+- **Sans Font**: Inter (modern UI elements, navigation)
 
 ### Components
 All components are built with Tailwind CSS classes and follow a consistent design pattern:
@@ -105,14 +125,63 @@ All components are built with Tailwind CSS classes and follow a consistent desig
 - Accessible color contrasts
 - Hover and focus states
 
-## 📊 Sample Data
+## 🔥 Dynamic Features Deep Dive
 
-The website includes sample data for:
+### API Architecture
+The website now features a complete RESTful API built with Next.js API routes:
+
+#### Available Endpoints
+```
+GET  /api/fabrics       - Get fabrics with optional filtering
+POST /api/fabrics       - Submit fabric inquiry
+GET  /api/suits         - Get suits with optional filtering
+POST /api/suits         - Submit suit inquiry
+GET  /api/brands        - Get brands with optional filtering
+GET  /api/testimonials  - Get testimonials with optional filtering
+POST /api/testimonials  - Submit new testimonial
+GET  /api/contact       - Get contact information
+POST /api/contact       - Submit contact form
+GET  /api/metadata/[page] - Get dynamic metadata for SEO
+```
+
+#### Query Parameters (Filtering)
+```
+# Fabrics & Suits
+?category=cotton,silk&season=summer&priceRange=premium&limit=10&search=luxury
+
+# Brands
+?featured=true&origin=Italy,India&sortBy=rating&limit=6
+
+# Testimonials
+?category=fabrics&rating=5&featured=true&limit=3
+```
+
+### Rendering Strategy
+- **Homepage**: Dynamic CSR with API calls for real-time data
+- **Product Pages**: Dynamic CSR with server-side filtering
+- **Brands SSR**: Server-side rendering for optimal SEO
+- **API Routes**: Server-side processing for all data operations
+
+### Performance Features
+- **Loading States**: Skeleton loading for better UX
+- **Error Handling**: Graceful fallbacks for API failures
+- **Optimistic Updates**: Immediate UI feedback
+- **Caching Strategy**: Built-in Next.js caching for API routes
+
+## 📊 Data & Content
+
+### Sample Data Included
 - **6 Fabric Products**: Various categories, seasons, and price ranges
 - **6 Suit Products**: Different styles and occasions
-- **6 Fashion Brands**: Leading Indian fashion brands
+- **6 Fashion Brands**: Leading Indian and international brands
 - **5 Customer Testimonials**: Real-style customer reviews
 - **Contact Information**: Showroom details and hours
+
+### Data Management
+- **JSON Source Files**: Easy content management via JSON
+- **Type Safety**: Full TypeScript definitions for all data
+- **API Validation**: Server-side validation for form submissions
+- **Dynamic Metadata**: SEO metadata generated from content
 
 ## 🚀 Deployment
 
@@ -149,13 +218,56 @@ The website includes sample data for:
 
 #### Deploy to Netlify
 1. Build the project: `npm run build`
-2. Upload the `out` folder to Netlify
-3. Configure redirects for dynamic routes
+2. Deploy the project folder to Netlify
+3. Configure environment variables if needed
+4. **Note**: API routes require serverless functions support
 
-#### Deploy to GitHub Pages
-1. Install `gh-pages`: `npm install --save-dev gh-pages`
-2. Add to package.json scripts: `"deploy": "gh-pages -d out"`
-3. Run: `npm run build && npm run deploy`
+#### Deploy to Vercel (Alternative)
+1. Connect GitHub repository to Vercel
+2. Auto-deploy on push to main branch
+3. Environment variables configured in dashboard
+
+## 🧪 API Testing
+
+### Test API Endpoints
+Once the development server is running, you can test the API endpoints:
+
+```bash
+# Get all fabrics
+curl http://localhost:3000/api/fabrics
+
+# Get filtered fabrics
+curl "http://localhost:3000/api/fabrics?category=silk&season=summer&limit=5"
+
+# Get featured brands
+curl "http://localhost:3000/api/brands?featured=true"
+
+# Get testimonials with high ratings
+curl "http://localhost:3000/api/testimonials?rating=5&limit=3"
+
+# Submit contact form (POST)
+curl -X POST http://localhost:3000/api/contact \
+  -H "Content-Type: application/json" \
+  -d '{"name":"John Doe","phone":"+91-9876543210","message":"Test inquiry"}'
+```
+
+### API Response Format
+All API endpoints return a consistent response format:
+```json
+{
+  "success": true,
+  "data": [...],
+  "total": 10,
+  "filters": {
+    "categories": ["cotton", "silk"],
+    "seasons": ["summer", "winter"]
+  },
+  "statistics": {
+    "averageRating": 4.5,
+    "totalReviews": 25
+  }
+}
+```
 
 ## 🔍 SEO & Analytics
 

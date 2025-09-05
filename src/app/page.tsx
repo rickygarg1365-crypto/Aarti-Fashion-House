@@ -10,15 +10,17 @@ import {
   EnvelopeIcon
 } from '@heroicons/react/24/outline';
 
-// Import sample data
-import fabricsData from '@/data/fabrics.json';
-import suitsData from '@/data/suits.json';
-import brandsData from '@/data/brands.json';
-import testimonialsData from '@/data/testimonials.json';
+// Dynamic API imports
+import { getFabrics, getSuits, getBrands, getTestimonials } from '@/lib/api';
+import { Fabric, Suit, Brand, Testimonial } from '@/types';
 
 export default function HomePage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
+  const [featuredItems, setFeaturedItems] = useState<Array<(Fabric | Suit) & { type: string }>>([]);
+  const [featuredBrands, setFeaturedBrands] = useState<Brand[]>([]);
+  const [featuredTestimonials, setFeaturedTestimonials] = useState<Testimonial[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -29,10 +31,37 @@ export default function HomePage() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const featuredItems = [
-    ...fabricsData.slice(0, 2).map(item => ({ ...item, type: 'fabric' })),
-    ...suitsData.slice(0, 2).map(item => ({ ...item, type: 'suit' }))
-  ];
+  // Fetch dynamic data
+  useEffect(() => {
+    const fetchFeaturedData = async () => {
+      try {
+        setLoading(true);
+        
+        const [fabricsResponse, suitsResponse, brandsResponse, testimonialsResponse] = await Promise.all([
+          getFabrics({ limit: 2 }),
+          getSuits({ featured: true, limit: 2 }),
+          getBrands({ featured: true, limit: 6 }),
+          getTestimonials({ featured: true, limit: 3 })
+        ]);
+
+        // Combine fabrics and suits for featured items
+        const items = [
+          ...(fabricsResponse.data || []).map((item: Fabric) => ({ ...item, type: 'fabric' })),
+          ...(suitsResponse.data || []).map((item: Suit) => ({ ...item, type: 'suit' }))
+        ];
+
+        setFeaturedItems(items);
+        setFeaturedBrands(brandsResponse.data || []);
+        setFeaturedTestimonials(testimonialsResponse.data || []);
+      } catch (error) {
+        console.error('Error fetching featured data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFeaturedData();
+  }, []);
 
   const handleWhatsApp = (message: string) => {
     window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank');
@@ -212,8 +241,23 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid lg:grid-cols-4 gap-8">
-            {featuredItems.map((item, index) => (
+          {loading ? (
+            <div className="grid lg:grid-cols-4 gap-8">
+              {[...Array(4)].map((_, index) => (
+                <div key={index} className="animate-pulse">
+                  <div className="aspect-[3/4] bg-cream mb-6" />
+                  <div className="h-6 bg-cream mb-2 rounded" />
+                  <div className="h-4 bg-cream mb-3 rounded w-3/4" />
+                  <div className="flex justify-between">
+                    <div className="h-4 bg-cream rounded w-1/3" />
+                    <div className="h-4 bg-cream rounded w-1/4" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid lg:grid-cols-4 gap-8">
+              {featuredItems.map((item, index) => (
               <div key={item.id} className={`group cursor-pointer transform transition-all duration-700 hover:-translate-y-2 ${index % 2 === 1 ? 'lg:mt-12' : ''}`}>
                 <div className="aspect-[3/4] bg-cream relative overflow-hidden mb-6">
                   <img 
@@ -245,8 +289,9 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -263,7 +308,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-12">
-            {testimonialsData.slice(0, 3).map((testimonial, index) => (
+            {featuredTestimonials.map((testimonial, index) => (
               <div key={testimonial.id} className={`transform transition-all duration-700 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} style={{ transitionDelay: `${index * 200}ms` }}>
                 <div className="mb-6">
                   <div className="flex mb-4">

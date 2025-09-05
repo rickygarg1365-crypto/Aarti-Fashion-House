@@ -2,18 +2,16 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { ArrowUpRightIcon, FunnelIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import fabricsData from '@/data/fabrics.json';
+import { getFabrics } from '@/lib/api';
 import { Fabric } from '@/types';
 
-const fabrics: Fabric[] = fabricsData;
-
-const filterOptions = {
+const baseFilterOptions = {
   category: [
-    { value: 'cotton', label: 'Cotton', count: fabrics.filter(f => f.category === 'cotton').length },
-    { value: 'silk', label: 'Silk', count: fabrics.filter(f => f.category === 'silk').length },
-    { value: 'wool', label: 'Wool', count: fabrics.filter(f => f.category === 'wool').length },
-    { value: 'linen', label: 'Linen', count: fabrics.filter(f => f.category === 'linen').length },
-    { value: 'synthetic', label: 'Synthetic', count: fabrics.filter(f => f.category === 'synthetic').length },
+    { value: 'cotton', label: 'Cotton' },
+    { value: 'silk', label: 'Silk' },
+    { value: 'wool', label: 'Wool' },
+    { value: 'linen', label: 'Linen' },
+    { value: 'synthetic', label: 'Synthetic' },
   ],
   season: [
     { value: 'spring', label: 'Spring' },
@@ -41,10 +39,48 @@ export default function FabricsPage() {
   const [showFilters, setShowFilters] = useState(false);
   const [selectedFabric, setSelectedFabric] = useState<Fabric | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [fabrics, setFabrics] = useState<Fabric[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [filterOptions, setFilterOptions] = useState(baseFilterOptions);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  // Fetch fabrics data dynamically
+  useEffect(() => {
+    const fetchFabrics = async () => {
+      try {
+        setLoading(true);
+        const response = await getFabrics({
+          category: activeFilters.category.length > 0 ? activeFilters.category : undefined,
+          season: activeFilters.season.length > 0 ? activeFilters.season : undefined,
+          priceRange: activeFilters.priceRange.length > 0 ? activeFilters.priceRange : undefined,
+        });
+        
+        if (response.success && response.data) {
+          setFabrics(response.data);
+          
+          // Update filter options with counts if available
+          if (response.filters) {
+            const updatedFilterOptions = { ...baseFilterOptions };
+            // Add counts to categories based on actual data
+            updatedFilterOptions.category = baseFilterOptions.category.map(cat => ({
+              ...cat,
+              count: response.data?.filter((f: Fabric) => f.category === cat.value).length || 0
+            }));
+            setFilterOptions(updatedFilterOptions);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching fabrics:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFabrics();
+  }, [activeFilters]);
 
   const handleFilterChange = (filterType: string, value: string) => {
     setActiveFilters(prev => ({
@@ -63,18 +99,8 @@ export default function FabricsPage() {
     });
   };
 
-  const filteredFabrics = useMemo(() => {
-    return fabrics.filter(fabric => {
-      const categoryMatch = activeFilters.category.length === 0 || 
-        activeFilters.category.includes(fabric.category);
-      const seasonMatch = activeFilters.season.length === 0 || 
-        activeFilters.season.includes(fabric.season);
-      const priceRangeMatch = activeFilters.priceRange.length === 0 || 
-        activeFilters.priceRange.includes(fabric.priceRange);
-
-      return categoryMatch && seasonMatch && priceRangeMatch;
-    });
-  }, [activeFilters]);
+  // fabrics are now already filtered from the API
+  const filteredFabrics = fabrics;
 
   const handleWhatsApp = (fabric: Fabric) => {
     const message = `Hello! I'm interested in the ${fabric.name} fabric. Can you provide more details about availability and pricing?`;
