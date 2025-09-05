@@ -1,0 +1,74 @@
+[
+  {
+    "id": "fab-001",
+    "name": "Premium Banarasi Silk",
+    "description": "Luxurious handwoven Banarasi silk with intricate gold thread work, perfect for weddings and special occasions.",
+    "category": "silk",
+    "season": "all-season",
+    "priceRange": "luxury",
+    "price": 2500,
+    "image": "/images/fabrics/banarasi-silk.jpg",
+    "colors": ["Deep Red", "Royal Blue", "Golden Yellow", "Emerald Green"],
+    "inStock": true
+  },
+  {
+    "id": "fab-002",
+    "name": "Pure Cotton Khadi",
+    "description": "Authentic handspun khadi cotton fabric, breathable and comfortable for everyday wear.",
+    "category": "cotton",
+    "season": "summer",
+    "priceRange": "budget",
+    "price": 450,
+    "image": "/images/fabrics/khadi-cotton.jpg",
+    "colors": ["Natural White", "Light Blue", "Beige", "Mint Green"],
+    "inStock": true
+  },
+  {
+    "id": "fab-003",
+    "name": "Merino Wool Suiting",
+    "description": "Fine quality imported merino wool, ideal for formal suits and winter wear.",
+    "category": "wool",
+    "season": "winter",
+    "priceRange": "premium",
+    "price": 1800,
+    "image": "/images/fabrics/merino-wool.jpg",
+    "colors": ["Charcoal Grey", "Navy Blue", "Black", "Dark Brown"],
+    "inStock": true
+  },
+  {
+    "id": "fab-004",
+    "name": "Designer Linen Blend",
+    "description": "Premium linen blend with subtle texture, perfect for casual and semi-formal wear.",
+    "category": "linen",
+    "season": "spring",
+    "priceRange": "mid-range",
+    "price": 850,
+    "image": "/images/fabrics/linen-blend.jpg",
+    "colors": ["Cream", "Light Grey", "Dusty Pink", "Sage Green"],
+    "inStock": true
+  },
+  {
+    "id": "fab-005",
+    "name": "Rajasthani Block Print",
+    "description": "Traditional hand-block printed cotton fabric with authentic Rajasthani motifs.",
+    "category": "cotton",
+    "season": "all-season",
+    "priceRange": "mid-range",
+    "price": 650,
+    "image": "/images/fabrics/block-print.jpg",
+    "colors": ["Indigo Blue", "Maroon", "Mustard Yellow", "Forest Green"],
+    "inStock": true
+  },
+  {
+    "id": "fab-006",
+    "name": "Georgette Evening Wear",
+    "description": "Flowing georgette fabric with shimmer, perfect for evening gowns and party wear.",
+    "category": "synthetic",
+    "season": "all-season",
+    "priceRange": "mid-range",
+    "price": 750,
+    "image": "/images/fabrics/georgette.jpg",
+    "colors": ["Wine Red", "Midnight Blue", "Silver Grey", "Rose Gold"],
+    "inStock": false
+  }
+]

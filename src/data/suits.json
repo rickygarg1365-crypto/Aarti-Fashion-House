@@ -1,0 +1,74 @@
+[
+  {
+    "id": "suit-001",
+    "name": "Royal Wedding Sherwani",
+    "description": "Exquisite silk sherwani with hand-embroidered details, perfect for grooms and special ceremonies.",
+    "category": "wedding",
+    "size": ["S", "M", "L", "XL", "XXL"],
+    "price": 15000,
+    "image": "/images/suits/royal-sherwani.jpg",
+    "colors": ["Ivory", "Deep Maroon", "Golden Beige"],
+    "inStock": true,
+    "material": "Silk with Gold Thread Work"
+  },
+  {
+    "id": "suit-002",
+    "name": "Classic Business Suit",
+    "description": "Tailored business suit in premium wool, ideal for corporate meetings and formal events.",
+    "category": "formal",
+    "size": ["S", "M", "L", "XL"],
+    "price": 8500,
+    "image": "/images/suits/business-suit.jpg",
+    "colors": ["Charcoal Grey", "Navy Blue", "Black"],
+    "inStock": true,
+    "material": "100% Wool"
+  },
+  {
+    "id": "suit-003",
+    "name": "Party Blazer Set",
+    "description": "Stylish blazer with matching trousers, perfect for parties and social gatherings.",
+    "category": "party",
+    "size": ["S", "M", "L", "XL", "XXL"],
+    "price": 6500,
+    "image": "/images/suits/party-blazer.jpg",
+    "colors": ["Wine Red", "Midnight Blue", "Emerald Green"],
+    "inStock": true,
+    "material": "Cotton Blend with Velvet Lapels"
+  },
+  {
+    "id": "suit-004",
+    "name": "Casual Linen Kurta Set",
+    "description": "Comfortable linen kurta with pajama, ideal for casual outings and festivals.",
+    "category": "casual",
+    "size": ["S", "M", "L", "XL", "XXL"],
+    "price": 3500,
+    "image": "/images/suits/linen-kurta.jpg",
+    "colors": ["White", "Light Blue", "Cream", "Khaki"],
+    "inStock": true,
+    "material": "Pure Linen"
+  },
+  {
+    "id": "suit-005",
+    "name": "Designer Nehru Jacket",
+    "description": "Contemporary Nehru jacket with intricate patterns, can be paired with kurta or shirt.",
+    "category": "formal",
+    "size": ["S", "M", "L", "XL"],
+    "price": 4500,
+    "image": "/images/suits/nehru-jacket.jpg",
+    "colors": ["Black", "Navy Blue", "Burgundy", "Forest Green"],
+    "inStock": true,
+    "material": "Silk Cotton Blend"
+  },
+  {
+    "id": "suit-006",
+    "name": "Traditional Achkan",
+    "description": "Classic achkan with traditional buttons and collar, perfect for cultural events.",
+    "category": "wedding",
+    "size": ["M", "L", "XL", "XXL"],
+    "price": 7500,
+    "image": "/images/suits/traditional-achkan.jpg",
+    "colors": ["Cream", "Golden", "Light Pink"],
+    "inStock": false,
+    "material": "Silk with Zari Work"
+  }
+]

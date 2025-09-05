@@ -1,0 +1,45 @@
+[
+  {
+    "id": "test-001",
+    "name": "Priya Sharma",
+    "location": "Chandigarh, Punjab",
+    "rating": 5,
+    "comment": "Excellent quality fabrics and outstanding service! Found the perfect silk for my daughter's wedding. The staff was very knowledgeable and helpful.",
+    "image": "/images/testimonials/priya-sharma.jpg",
+    "date": "2024-02-15"
+  },
+  {
+    "id": "test-002",
+    "name": "Rajesh Kumar",
+    "location": "Amritsar, Punjab",
+    "rating": 5,
+    "comment": "Best place for premium suits in Punjab. The craftsmanship is exceptional and the fit is perfect. Highly recommend for wedding shopping.",
+    "date": "2024-01-28"
+  },
+  {
+    "id": "test-003",
+    "name": "Simran Kaur",
+    "location": "Ludhiana, Punjab",
+    "rating": 4,
+    "comment": "Great collection of designer fabrics. The variety is impressive and prices are reasonable for the quality offered.",
+    "image": "/images/testimonials/simran-kaur.jpg",
+    "date": "2024-03-02"
+  },
+  {
+    "id": "test-004",
+    "name": "Harpreet Singh",
+    "location": "Jalandhar, Punjab",
+    "rating": 5,
+    "comment": "Bought my wedding sherwani from here. The attention to detail and customer service exceeded my expectations. Worth every penny!",
+    "date": "2024-01-10"
+  },
+  {
+    "id": "test-005",
+    "name": "Meera Patel",
+    "location": "Patiala, Punjab",
+    "rating": 4,
+    "comment": "Beautiful collection and helpful staff. They helped me choose the perfect fabric for my son's engagement ceremony.",
+    "image": "/images/testimonials/meera-patel.jpg",
+    "date": "2024-02-28"
+  }
+]

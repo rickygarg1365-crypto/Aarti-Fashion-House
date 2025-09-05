@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fefefe;
+  --foreground: #0f0f0f;
+  
+  /* Unique Premium Color Palette */
+  --gold-primary: #c9a96e;
+  --gold-light: #d4b985;
+  --gold-dark: #b8954d;
+  --charcoal: #1a1a1a;
+  --charcoal-light: #2a2a2a;
+  --sage: #9ca986;
+  --cream: #f7f5f1;
+  --pearl: #f9f8f6;
+  --slate: #4a5568;
+  --slate-light: #718096;
+  --accent-copper: #b08d57;
+  --accent-rose: #d4af9a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  /* Premium Color System */
+  --color-gold-primary: var(--gold-primary);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --color-charcoal: var(--charcoal);
+  --color-charcoal-light: var(--charcoal-light);
+  --color-sage: var(--sage);
+  --color-cream: var(--cream);
+  --color-pearl: var(--pearl);
+  --color-slate: var(--slate);
+  --color-slate-light: var(--slate-light);
+  --color-copper: var(--accent-copper);
+  --color-rose: var(--accent-rose);
+  
+  /* Typography */
+  --font-serif: "Cormorant Garamond", serif;
+  --font-display: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1E1E1E;
+    --foreground: #ffffff;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--red-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--red-hover);
+}
+
+/* Button focus styles for accessibility */
+button:focus,
+a:focus {
+  outline: 2px solid var(--red-primary);
+  outline-offset: 2px;
+}
+
+/* Utility classes */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}

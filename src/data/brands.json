@@ -1,0 +1,56 @@
+[
+  {
+    "id": "brand-001",
+    "name": "Sabyasachi",
+    "description": "India's premier luxury fashion brand known for exquisite craftsmanship and heritage textiles.",
+    "logo": "/images/brands/sabyasachi-logo.png",
+    "website": "https://sabyasachi.com",
+    "established": 1999,
+    "speciality": ["Bridal Wear", "Luxury Textiles", "Heritage Crafts"]
+  },
+  {
+    "id": "brand-002",
+    "name": "Manish Malhotra",
+    "description": "Bollywood's favorite designer bringing glamour and sophistication to Indian fashion.",
+    "logo": "/images/brands/manish-malhotra-logo.png",
+    "website": "https://manishmalhotra.in",
+    "established": 1998,
+    "speciality": ["Celebrity Fashion", "Haute Couture", "Party Wear"]
+  },
+  {
+    "id": "brand-003",
+    "name": "Fabindia",
+    "description": "Contemporary Indian clothing and accessories celebrating traditional craftsmanship.",
+    "logo": "/images/brands/fabindia-logo.png",
+    "website": "https://fabindia.com",
+    "established": 1960,
+    "speciality": ["Handloom Textiles", "Ethnic Wear", "Sustainable Fashion"]
+  },
+  {
+    "id": "brand-004",
+    "name": "Raymond",
+    "description": "India's most trusted fabric and menswear brand with premium quality suiting.",
+    "logo": "/images/brands/raymond-logo.png",
+    "website": "https://raymond.in",
+    "established": 1925,
+    "speciality": ["Men's Formal Wear", "Premium Fabrics", "Suiting"]
+  },
+  {
+    "id": "brand-005",
+    "name": "Tarun Tahiliani",
+    "description": "Pioneer of luxury pret and couture fashion blending Indian and Western aesthetics.",
+    "logo": "/images/brands/tarun-tahiliani-logo.png",
+    "website": "https://taruntahiliani.com",
+    "established": 1987,
+    "speciality": ["Luxury Pret", "Bridal Couture", "Contemporary Indian"]
+  },
+  {
+    "id": "brand-006",
+    "name": "Manyavar",
+    "description": "Leading ethnic wear brand for men, specializing in celebration and wedding attire.",
+    "logo": "/images/brands/manyavar-logo.png",
+    "website": "https://manyavar.com",
+    "established": 1999,
+    "speciality": ["Men's Ethnic Wear", "Wedding Collection", "Festival Wear"]
+  }
+]

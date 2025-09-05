@@ -1,0 +1,35 @@
+{
+  "address": {
+    "street": "Shop No. 15-16, Grand Trunk Road, Civil Lines",
+    "city": "Ludhiana",
+    "state": "Punjab",
+    "zipCode": "141001"
+  },
+  "phone": "+91 9876543210",
+  "whatsapp": "+91 9876543210",
+  "email": "info@aartifashionhouse.com",
+  "hours": {
+    "weekdays": "10:00 AM - 8:00 PM",
+    "saturday": "10:00 AM - 9:00 PM",
+    "sunday": "11:00 AM - 7:00 PM"
+  },
+  "googleMapsUrl": "https://maps.google.com/embed?pb=!1m18!1m12!1m3!1d3422.1234567890!2d75.8573105!3d30.9009857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDU0JzAzLjUiTiA3NcKwNTEnMjYuMyJF!5e0!3m2!1sen!2sin!4v1234567890123",
+  "socialMedia": [
+    {
+      "platform": "Facebook",
+      "url": "https://facebook.com/aartifashionhouse"
+    },
+    {
+      "platform": "Instagram", 
+      "url": "https://instagram.com/aartifashionhouse"
+    },
+    {
+      "platform": "WhatsApp",
+      "url": "https://wa.me/919876543210"
+    },
+    {
+      "platform": "Google Reviews",
+      "url": "https://www.google.com/search?q=aarti+fashion+house+punjab"
+    }
+  ]
+}
